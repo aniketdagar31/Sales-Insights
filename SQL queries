@@ -1,1 +1,24 @@
-S
+SQL queries used to gain key insights on the dataset and verify Power BI calculations. I used MYSQL workbench to work on the dataset of around 1,50,000 records.
+
+1.	SELECT * FROM customers;
+
+2.	SELECT count(*) FROM customers;
+
+3.	SELECT * FROM transactions where market_code='Mark001';
+
+4.	SELECT distinct product_code FROM transactions where market_code='Mark001';
+
+5.	SELECT * from transactions where currency="USD";
+
+6.	SELECT transactions.*, date.* FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020;
+
+7.	SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 
+and transactions.currency="INR\r" or transactions.currency="USD\r";
+	
+8.	SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 
+and and date.month_name="January" and (transactions.currency="INR\r" or transactions.currency="USD\r");
+
+9.	SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 
+and transactions.market_code="Mark001";
+
+
